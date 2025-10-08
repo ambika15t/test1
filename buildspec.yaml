@@ -2,17 +2,17 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 14
     commands:
       - echo Installing dependencies...
-      - apt-get update
-      - apt-get install -y nginx
   build:
     commands:
-      - echo Build phase - copying files
-      - cp index.html /var/www/html/index.html
+      - echo Build started on `date`
+      - echo No build steps for static site
   post_build:
     commands:
-      - echo Build completed
+      - echo Build completed on `date`
 
 artifacts:
   files:
@@ -20,3 +20,4 @@ artifacts:
     - appspec.yaml
     - scripts/install_nginx.sh
     - scripts/start_nginx.sh
+  discard-paths: yes
